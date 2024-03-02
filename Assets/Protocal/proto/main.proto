@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package NetGameRunning;
+
+message PlayerInputData {
+  float joyX = 1;
+  float joyY = 2;
+  int32 playerID = 3;
+  int32 curFrameIndex = 4;
+  int32 nextFrameIndex = 5;
+}
+
+message UpdateMessageData {
+  int32 curFrameIndex = 1;
+  int32 nextFrameIndex = 2;
+  repeated PlayerInputData playerInputs = 3;
+  float delta = 4;
+}
+
+message RegisterMessageData {
+  int32 playerID = 1;
+}
