@@ -1,5 +1,5 @@
 using System;
-using System.ComponentModel;
+using AE_BEPUPhysics_Addition;
 using NetGameRunning;
 using UnityEngine;
 
@@ -13,11 +13,14 @@ namespace LockStep_Demo.Assets.Scripts
         private float m_upLoadInterval; //单位秒 间隔多少上传数据
         [SerializeField] private int m_FPS;
         private float m_timer;
+        private AEPhysicsMgr m_AEPhysicsMgr;
+
 
         private void Awake()
         {
-            m_PlayerMgr = new PlayerMgr();
-            m_upLoadInterval = 1f / m_FPS;
+            m_AEPhysicsMgr = new AEPhysicsMgr(new BEPUutilities.Vector3(0, -9.8m, 0));
+            m_PlayerMgr = new PlayerMgr(m_AEPhysicsMgr);
+            m_upLoadInterval = 1f / m_FPS;  
         }
 
         [ContextMenu("测试注册玩家")]

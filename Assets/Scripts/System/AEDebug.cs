@@ -11,10 +11,10 @@ namespace LockStep_Demo
         public static void Log(string msg)
         {
 #if DEBUGMODE
-#if UNITY_EDITOR
-            UnityEngine.Debug.Log(msg);
-#else
+#if SERVER
             Console.WriteLine(msg);
+#else
+            UnityEngine.Debug.Log(msg);
 #endif
 #endif
         }

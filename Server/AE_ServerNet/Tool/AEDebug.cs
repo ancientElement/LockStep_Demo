@@ -1,4 +1,5 @@
 ﻿#define DEBUGMODE
+#define SERVER
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,10 @@ namespace AE_ServerNet
         public static void Log(string msg)
         {
 #if DEBUGMODE
-#if UNITY_EDITOR
-            UnityEngine.Debug.Log(msg);
-#else
+#if SERVER
             Console.WriteLine(msg);
+#else
+            UnityEngine.Debug.Log(msg);
 #endif
 #endif
         }

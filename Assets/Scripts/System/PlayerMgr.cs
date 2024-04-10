@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using AE_BEPUPhysics_Addition;
 using AE_ClientNet;
 using AE_NetMessage;
 using NetGameRunning;
@@ -11,12 +12,14 @@ namespace LockStep_Demo
     {
         public int PlayerID { get; private set; } //控制的玩家的ID
         private Dictionary<int, BasePlayer> m_players; //键为ID
+        private AEPhysicsMgr m_physicsMgr;
 
-        public PlayerMgr()
+        public PlayerMgr(AEPhysicsMgr physicsMgr)
         {
             m_players = new Dictionary<int, BasePlayer>();
+            m_physicsMgr = physicsMgr;
             PlayerID = -1;
-           
+
             NetAsyncMgr.AddNetMessageListener(MessagePool.RegisterMessage_ID, ReciveRegisterPlayer);
             NetAsyncMgr.AddNetMessageListener(MessagePool.RegisterSelfMessage_ID, ReciveRegisterSelfPlayer);
         }
@@ -82,11 +85,10 @@ namespace LockStep_Demo
 
             var go = GameObject.Instantiate(prefab);
 
-            BasePlayer player = new BasePlayer(BasePlayer.STATEENUM.idle, go, 10f);
+            BasePlayer player = new BasePlayer(BasePlayer.STATEENUM.idle, go, 30f);
             m_players.Add(playerID, player);
-
+            m_physicsMgr.RegisterCollider(go.GetComponent<BaseVolumnBaseCollider>());
             AEDebug.Log("注册玩家");
-
             return player;
         }
     }

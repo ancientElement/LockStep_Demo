@@ -95,7 +95,7 @@ namespace LockStep_Demo_Server
                     for (int i = 0; i < m_IDRecived.Count; i++)
                     {
                         m_IDRecived[i] = false;
-                    }
+                    }   
                 }
             }
         }
@@ -131,6 +131,7 @@ namespace LockStep_Demo_Server
                 }
             }
 
+            AEDebug.Log("注册消息" + m_players.Count);
             m_IDRecived.Add(m_players.Count, false);
             m_players.Add(m_players.Count, socket);
         }
@@ -142,7 +143,7 @@ namespace LockStep_Demo_Server
         /// <param name="arg2"></param>
         private void ReciveHearMessage(BaseMessage arg1, ClientSocket arg2)
         {
-            AEDebug.Log("心跳消息");
+            // AEDebug.Log("心跳消息");
         }
     }
 }
