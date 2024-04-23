@@ -12,8 +12,7 @@
 其实，在初期学习，我都想要将学习成本尽可能的压缩，现在刚好有不需要处理**乱序**和**丢包**的TCP干嘛不去用呢？
 
 这里引用一下SkyWind的话：
-
-![img](ImagesAssets/Pasted image 20240227080921.png)
+![Pastedimage20240227080921.png](ImagesAssets/Pastedimage20240227080921.png)
 <center>图1 TCP还是UDP</center>
 
 其实帧同步和状态同步，在我的理解中，**帧同步**是转发**操作**，**状态同步**是转发**结果**。
