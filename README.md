@@ -147,7 +147,7 @@ public class BasePlayer
 		}  
 		else  
 		{  
-			m_state = STATEENUM.move;  
+			m_state = STATEENUM.idle;  
 		}  
 
 		switch (m_state)  
@@ -217,7 +217,8 @@ public class PlayerMgr
     /// <summary>  
     /// 逻辑更新,受到更新消息后更新  
     /// </summary>  
-    /// <param name="msg"></param>    public void OnLogincUpdate(UpdateMessageData updateData)  
+    /// <param name="msg"></param>    
+    public void OnLogincUpdate(UpdateMessageData updateData)  
     {  
         for (int i = 0; i < updateData.PlayerInputs.Count; i++)  
         {  
@@ -266,7 +267,9 @@ public class PlayerMgr
     /// <summary>  
     /// 真正注册玩家  
     /// </summary>  
-    /// <param name="playerID"></param>    /// <exception cref="NotImplementedException"></exception>    private BasePlayer RegisterPlayer(int playerID)  
+    /// <param name="playerID"></param>    
+    /// <exception cref="NotImplementedException"></exception>    
+    private BasePlayer RegisterPlayer(int playerID)  
     {  
         var prefab = Resources.Load<GameObject>("Player");  
   
@@ -406,7 +409,8 @@ public class NetTick : MonoBehaviour
 	/// <summary>  
 	/// 接收帧数据  
 	/// </summary>  
-	/// <param name="msg"></param>        private void ReciveUpdateMessage(BaseMessage msg)  
+	/// <param name="msg"></param>        
+    private void ReciveUpdateMessage(BaseMessage msg)  
 	{  
 		var updateMessage = msg as UpdateMessage;  
 		var updateDate = updateMessage.data;  
@@ -594,7 +598,9 @@ public class Room
 	/// <summary>  
 	/// 房间开始  
 	/// </summary>  
-	/// <param name="message"></param>        /// <param name="socket"></param>        private void StartRoom(BaseMessage message, ClientSocket socket)  
+	/// <param name="message"></param>        
+    /// <param name="socket"></param>        
+    private void StartRoom(BaseMessage message, ClientSocket socket)  
 	{  
 		CurFrame = 0;  
 		m_lastSendUpdateMsg = DateTime.Now;  
@@ -661,7 +667,9 @@ public class Room
 	/// <summary>  
 	/// 接收注册消息  
 	/// </summary>  
-	/// <param name="message"></param>        /// <param name="socket"></param>        private void ReciveRegisterSelfPlayer(BaseMessage message, ClientSocket socket)  
+	/// <param name="message"></param>        
+    /// <param name="socket"></param>        
+    private void ReciveRegisterSelfPlayer(BaseMessage message, ClientSocket socket)  
 	{  
 		if (m_players.ContainsValue(socket))  
 		{  
@@ -694,7 +702,9 @@ public class Room
 	/// <summary>  
 	/// 接收到心跳消息  
 	/// </summary>  
-	/// <param name="arg1"></param>        /// <param name="arg2"></param>        private void ReciveHearMessage(BaseMessage arg1, ClientSocket arg2)  
+	/// <param name="arg1"></param>        
+    /// <param name="arg2"></param>        
+    private void ReciveHearMessage(BaseMessage arg1, ClientSocket arg2)  
 	{  
 		Debug.Log("心跳消息");  
 	}  
